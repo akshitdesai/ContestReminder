@@ -1,0 +1,39 @@
+<html>
+    <body>
+        you are signed in as, {{data.email}}</br></br> 
+        <form action="update" method="post">
+            {% if data.codechef == 1 %}
+            <input type="checkbox" value="codechef" name="contest" checked>CodeChef</input></br></br>
+            {% else %}
+            <input type="checkbox" value="codechef" name="contest">CodeChef</input></br></br>
+            {% endif %}
+            {% if data.codeforces == 1 %}
+            <input type="checkbox" value="codeforces" name="contest" checked>CodeForces</input></br></br>
+            {% else %}
+            <input type="checkbox" value="codeforces" name="contest">CodeForces</input></br></br>
+            {% endif %}
+            {% if data.hackerearth == 1 %}
+            <input type="checkbox" value="hackerearth" name="contest" checked>HackerEarth</input></br></br>
+            {% else %}
+            <input type="checkbox" value="hackerearth" name="contest">HackerEarth</input></br></br>
+            {% endif %}
+            {% if data.hackerrank == 1 %}
+            <input type="checkbox" value="hackerrank" name="contest" checked>HackerRank</input></br></br>
+            {% else %}
+            <input type="checkbox" value="hackerrank" name="contest">HackerRank</input></br></br>
+            {% endif %}
+            {% if data.spoj == 1 %}
+            <input type="checkbox" value="spoj" name="contest" checked>Spoj</input></br></br>
+            {% else %}
+            <input type="checkbox" value="spoj" name="contest">Spoj</input></br></br>
+            {% endif %}
+            <input type="submit" value="update"/></br></br>
+        </form>
+        <form action="logout" method="post">
+            <input type="submit" value="Logout"/>
+        </form>
+        <form action="delete" method="post">
+            <input type="submit" value="Delete"/>
+        </form>
+    </body>
+</html>
