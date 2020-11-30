@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+	<div class="bg-text">
+		<img class="img" src="{% static 'images/register.gif' %}" height="150px" alt="Register">
+		<h1 style="color:black;">Sign Up</h1>
+		<form method="post">
+			{% csrf_token %}
+
+			{% for error in form.non_field_errors %}
+			    <span style="color: red; font-size: 12px;">{{error}}</span>
+			{% endfor %}
+
+			</br>
+			
+			{% for field in form.visible_fields %}
+		    	{{ field.label_tag }}
+		    	<span class="imp">{{ field }}<span></br></br>
+				{{ field.errors }}
+			{% endfor %}
+
+			<button class="btn1" type="submit">Sign Up</button>
+		</form>
+		</br>
+		<a class="btn2"  href="{% url 'login' %}">Login</a>
+		<a class="btn3" href="whatsapp://send?text=" data-action="share/whatsapp/share">Share</a>
+			
+            <p style="position: absolute; left:0px; right:0px; bottom: 0px; font-size:14px;">
+				<a href="" style="text-decoration:none">Report Bug/Send Feedback &nbsp;&nbsp;</a> 
+				<a href="about.html" style="text-decoration:none">&nbsp;&nbsp;&nbsp; About us</a>
+			</p>
+		</div>
+	</div>
+{% endblock %}
