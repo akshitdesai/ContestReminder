@@ -18,14 +18,14 @@
 			
 			{% for field in form.visible_fields %}
 		    	{{ field.label_tag }}
-		    	<span class="imp">{{ field }}<span></br></br>
+		    	<span class="imp">{{ field }}</span></br></br>
 				{{ field.errors }}
 			{% endfor %}
 
 			<button class="btn1" type="submit">Sign Up</button>
 		</form>
 		</br>
-		<a class="btn2"  href="{% url 'login' %}">Login</a>
+		<p style="font-size: 12px;">Already have account?</p><a class="btn2"  href="{% url 'login' %}">Login</a>
 		<a class="btn3" href="whatsapp://send?text=" data-action="share/whatsapp/share">Share</a>
 			
             <p style="position: absolute; left:0px; right:0px; bottom: 0px; font-size:14px;">
