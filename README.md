@@ -62,3 +62,10 @@ So I decided to make an app that sends reminder mail(mail with clean design and 
 * We can send reminders for the hackathons too. (From Devfolio, Devpost)
 * We can start a newsletter and mail a newsletter about new technologies and trends.
 * We can merge [Image-genrator](https://github.com/codestromer/contest-image-generator) to this project.(Useful to college coding clubs)
+
+| Mentors |
+|---|
+| Name | Email |
+|---|---|
+|Akshit Desai  | akshitdesai2000@gmail.com |
+|Omij Mangukiya| ozx1812@gmail.com |
