@@ -4,10 +4,11 @@ import requests
 import datetime
 from MySQLdb import *
 from test import *
+
 todaysContests = list()
 
+#extract Todays Contests from json file and append it to list
 def extractor():
-	#extract Todays Contests from json file and append it to list
 
 	todaysContests.clear()
 	data = requests.get(url="https://www.stopstalk.com/contests.json")
@@ -32,8 +33,8 @@ def extractor():
 	if(contestsCnt == 0):
 		print("No contests Today!!")
 
+#Check if contest is within an hour or not
 def inHour(contestStartTime):
-    #Check if contest is within an hour or not
     
 	time1 = datetime.datetime.now()
 	time2 = time1 + datetime.timedelta(hours=6,minutes=00)
@@ -47,9 +48,11 @@ def inHour(contestStartTime):
 		return True
 	else:
 		return False
-    
+
+
+#send message to everyone in Database
 def sendMail(content,contest):
-    #send message to everyone in Database
+    
 	con = None
 	try:
 		con = connect(host='localhost',user='root',password='5656',db='ContestReminder')
@@ -66,8 +69,9 @@ def sendMail(content,contest):
 	print(contest)
 	sendmail(mailList,contest)
 
+
+# Create HTML msg for contest Reminder
 def createContent(contest_details):
-    #Create HTML msg for contest Reminder
 
 	time = ""
 	if int(contest_details['StartTime'][0:2])>=12:
@@ -89,16 +93,17 @@ def createContent(contest_details):
 		detailMsg += 'Registration Link : https://codeforces.com/contestRegistration/' + contest_details['contestLink'].split('/')[-1] + '\n'
 	return detailMsg
 
+
+#Traverse for every contest for Reminer
 def initMail(Mailcontests):
-    #Traverse for every contest for Reminer
 
 	for contest in Mailcontests:
 		content = createContent(contest)
 		sendMail(content,contest)
 		todaysContests.remove(contest)
 
+#Send Mail to Recepient for every contest before an hour
 def sendReminder():
-    #Send Mail to Recepient for every contest before an hour
 
 	sendRemain = []
 	for contest in todaysContests:
@@ -106,7 +111,6 @@ def sendReminder():
 		if(inHour(contestStartTime)):
 			sendRemain.append(contest)
 	initMail(sendRemain)
-
 
 
 def first():
