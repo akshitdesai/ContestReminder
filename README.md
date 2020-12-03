@@ -63,8 +63,8 @@ So I decided to make an app that sends reminder mail(mail with clean design and 
 * We can start a newsletter and mail a newsletter about new technologies and trends.
 * We can merge [Image-genrator](https://github.com/codestromer/contest-image-generator) to this project.(Useful to college coding clubs)
 
-| Mentors |
-|---|
+## Handled By
+
 | Name | Email |
 |---|---|
 |Akshit Desai  | akshitdesai2000@gmail.com |
