@@ -7,9 +7,12 @@ from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.image import MIMEImage
 
+
 todaysContests = list()
-def extractor():
-    #extract Todays Contests from json file and append it to list
+
+
+#extract Todays Contests from json file and append it to list
+def extractor():    
 
     todaysContests.clear()
     data = requests.get(url="https://www.stopstalk.com/contests.json")
@@ -20,7 +23,7 @@ def extractor():
     dateToday = str(today.strftime("%d"))+" "+str(today.strftime("%b"))
     contestsCnt = 0
     for contest in upcoming_contest:
-        if(contest['StartTime'][5:11]=="25 Apr"):
+        if(contest['StartTime'][5:11]== today):
             contest_details = {
                 'Name' : contest['Name'],
                 'StartDate' : str(today.strftime("%d"))+" "+str(today.strftime("%B"))+","+str(today.strftime("%Y")),
@@ -34,8 +37,9 @@ def extractor():
     if(contestsCnt == 0):
         print("No contests Today!!")
 
+
+#Check if contest is within an hour or not
 def inHour(contestStartTime):
-    #Check if contest is within an hour or not
     
     time1 = datetime.datetime.now()
     time2 = time1 + datetime.timedelta(hours=8,minutes=30)
@@ -50,14 +54,13 @@ def inHour(contestStartTime):
     else:
         return False
     
-def sendMail(content):
-    #send message to everyone in Database
-    
-    fromaddr = "codestromer@gmail.com"
-    toaddr = "akshitdesai@yahoo.com"
-    x=0
 
-    # Define these once; use them twice!
+#send message to everyone in Database
+def sendMail(content):
+    
+    fromaddr = " "
+    toaddr = " "
+    x=0
 
     # Create the root message and fill in the from, to, and subject headers
     msgRoot = MIMEMultipart('related')
@@ -139,8 +142,9 @@ def sendMail(content):
     s.quit()
     print(x)
 
+
+#Create HTML msg for contest Reminder
 def createContent(contest_details):
-    #Create HTML msg for contest Reminder
 
     time = ""
     if int(contest_details['StartTime'][0:2])>=12:
@@ -165,16 +169,18 @@ def createContent(contest_details):
         
     return detailMsg
 
+
+#Traverse for every contest for Reminer
 def initMail(Mailcontests):
-    #Traverse for every contest for Reminer
 
     for contest in Mailcontests:
         content = createContent(contest)
         sendMail(content)
         todaysContests.remove(contest)
 
+
+#Send Mail to Recepient for every contest before an hour
 def sendReminder():
-    #Send Mail to Recepient for every contest before an hour
 
     sendRemain = []
     for contest in todaysContests:
@@ -182,7 +188,6 @@ def sendReminder():
         if(inHour(contestStartTime)):
             sendRemain.append(contest)
     initMail(sendRemain)
-
 
 
 extractor()
