@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+	<div class="bg-text">
+		<img class="img" src="{% static 'images/Reminder.gif' %}" height = "110px" alt="Reminder">
+		<h1 style="color:black;">About</h1>
+		<h2>These are our wonderful contributors!</h2>
+		{% for contributor in contributors %}
+			{% if contributor.contributions == 1 %}
+				<a href="{{ contributor.html_url }}" target="_blank" rel="nofollow">
+					<img width="100" height="100" src="{{ contributor.avatar_url }}" title="{{ contributor.login }} contributed {{contributor.contributions}} time!"></img>
+				</a>
+			{% else %}
+				<a href="{{ contributor.html_url }}" target="_blank" rel="nofollow">
+					<img width="100" height="100" src="{{ contributor.avatar_url }}" title="{{ contributor.login }} contributed {{contributor.contributions}} times!"></img>
+				</a>
+			{% endif %}
+		{% endfor %}
+		</br></br>
+		<a class="btn2" href="{% url 'home' %}">Home</a>
+	</div>
+{% endblock %}
