@@ -9,13 +9,11 @@
 		<h1 style="color:black;">Contest Reminder</h1>
 		{% if user.is_authenticated %}
 			Hi {{ user.email }} </br></br>
-			<a class="btn2"  href="{% url 'logout' %}">Log Out</a> </br></br>
-			<a class="btn2"  href="{% url 'about' %}">About</a>
+			<a class="btn2"  href="{% url 'logout' %}">Log Out</a>
 		{% else %}
 			<p>You are not logged in</p>
 			<a class="btn2" href="{% url 'login' %}">Log In</a> </br>
-			<a class="btn2" href="{% url 'signup' %}">Sign Up</a> </br></br>
-			<a class="btn2" href="{% url 'about' %}">About</a>
+			<a class="btn2" href="{% url 'signup' %}">Sign Up</a>
 		{% endif %}
 
 		</br>
@@ -23,7 +21,7 @@
 			</br>
             <p style="position: absolute; left:0px; right:0px; bottom: 0px; font-size:14px;">
 				<a href="" style="text-decoration:none">Report Bug/Send Feedback &nbsp;&nbsp;</a> 
-				<a href="about.html" style="text-decoration:none">&nbsp;&nbsp;&nbsp; About us</a>
+				<a href="{% url 'about' %}" style="text-decoration:none">&nbsp;&nbsp;&nbsp; Contributors</a>
 			</p>
 		</div>
 	</div>
