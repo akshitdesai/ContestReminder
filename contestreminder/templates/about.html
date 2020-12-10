@@ -6,7 +6,6 @@
 {% block content %}
 	<div class="bg-text">
 		<img class="img" src="{% static 'images/Reminder.gif' %}" height = "110px" alt="Reminder">
-		<h1 style="color:black;">About</h1>
 		<h2>These are our wonderful contributors!</h2>
 		{% for contributor in contributors %}
 			{% if contributor.contributions == 1 %}
