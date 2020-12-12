@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Delete Account?{% endblock %}
+
+{% block content %}
+	<div class="bg-text">
+		<img class="img" src="{% static 'images/Reminder.gif' %}" height="110px" alt="Reminder">
+		<h1 style="color:black;">Contest Reminder</h1>
+		<form method="post">
+			{% csrf_token %}
+			<h2>Are you sure you want to delete your account?</h2>
+			</br>
+			</br>
+			<a class="btn1" href="{% url 'profile' %}">Back to Profile</a>
+			<button class="btn1 btn-danger" type="submit">Confirm Delete</button>
+			</br>
+			<a class="btn3" href="whatsapp://send?text=" data-action="share/whatsapp/share">Share</a>
+			</br>
+			<p style="position: absolute; left:0px; right:0px; bottom: 0px; font-size:14px;">
+				<a href="https://github.com/codestromer/ContestReminder/issues" style="text-decoration:none" rel="noopener noreferrer" target="_blank">Report Bug &nbsp;&nbsp;</a> 
+				<a href="{% url 'about' %}" style="text-decoration:none">&nbsp;&nbsp;&nbsp; Contributors</a>
+			</p>
+		</form>
+	</div>
+{% endblock %}

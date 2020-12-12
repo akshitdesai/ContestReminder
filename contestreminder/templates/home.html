@@ -9,10 +9,13 @@
 		<h1 style="color:black;">Contest Reminder</h1>
 		{% if user.is_authenticated %}
 			Hi {{ user.email }} </br></br>
-			<a class="btn2"  href="{% url 'logout' %}">Log Out</a>
+			<a class="btn2" href="{% url 'profile' %}">Profile</a>
+			</br>
+			<a class="btn2" href="{% url 'logout' %}">Log Out</a>
 		{% else %}
 			<p>You are not logged in</p>
-			<a class="btn2" href="{% url 'login' %}">Log In</a> </br>
+			<a class="btn2" href="{% url 'login' %}">Log In</a>
+			</br>
 			<a class="btn2" href="{% url 'signup' %}">Sign Up</a>
 		{% endif %}
 
