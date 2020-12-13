@@ -15,7 +15,8 @@ class SignUpView(CreateView):
 
 class ProfileView(UpdateView):
     model = CustomUser
-    form_class = CustomUserChangeForm
+    # form_class = CustomUserChangeForm
+    fields=['codeChef', 'codeForces', 'hackerEarth', 'hackerRank', 'spoj']
     success_url = reverse_lazy('profile')
     template_name = 'user/profile.html'
 
