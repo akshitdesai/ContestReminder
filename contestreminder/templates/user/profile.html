@@ -21,9 +21,10 @@
 		    	<span class="imp">{{ field }}</span></br></br>
 				{{ field.errors }}
 			{% endfor %}
+			<button class="btn1" type="submit">Update</button> </br>
 		</form>
-		<button class="btn1" type="submit">Update</button> &emsp;
-		<a class="btn2" href="{% url 'delete' %}">Delete Account</a> </br></br>
+		
+		<a class="btn2" href="{% url 'delete' %}">Delete Account</a> </br>
 		<a class="btn2" href="{% url 'home' %}">Home</a> </br></br>
 
 		<a class="btn3" href="whatsapp://send?text=" data-action="share/whatsapp/share">Share</a>
