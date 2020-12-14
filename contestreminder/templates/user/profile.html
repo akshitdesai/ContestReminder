@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+	<div class="bg-text">
+		<img class="img" src="{% static 'images/register.gif' %}" height="150px" alt="Register">
+		<h1 style="color:black;">Profile</h1>
+		<form method="post">
+			{% csrf_token %}
+			
+			{% for error in form.non_field_errors %}
+			    <span style="color: red; font-size: 12px;">{{error}}</span>
+			{% endfor %}
+
+			</br>
+			
+			{% for field in form.visible_fields %}
+		    	{{ field.label_tag }}
+		    	<span class="imp">{{ field }}</span></br></br>
+				{{ field.errors }}
+			{% endfor %}
+		</form>
+		<button class="btn1" type="submit">Update</button> &emsp;
+		<a class="btn2" href="{% url 'delete' %}">Delete Account</a> </br></br>
+		<a class="btn2" href="{% url 'home' %}">Home</a> </br></br>
+
+		<a class="btn3" href="whatsapp://send?text=" data-action="share/whatsapp/share">Share</a>
+		</br>
+        	<p style="position: absolute; left:0px; right:0px; bottom: 0px; font-size:14px;">
+			<a href="https://github.com/codestromer/ContestReminder/issues" style="text-decoration:none" rel="noopener noreferrer" target="_blank">Report Bug &nbsp;&nbsp;</a> 
+			<a href="{% url 'about' %}" style="text-decoration:none">&nbsp;&nbsp;&nbsp; Contributors</a>
+		</p>
+	</div>
+{% endblock %}
