@@ -10,7 +10,7 @@ def sendmail(toaddr,content):
 	# setting up the details
 	fromaddr = "contestreminder1@gmail.com"
 
-	pwd = "1Contest#Reminder"
+	pwd = ""
 	x=0
 
 	# toaddr = ["ultrautsav@gmail.com","asb.cp.62@gmail.com"]
